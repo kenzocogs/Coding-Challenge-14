@@ -6,6 +6,19 @@
     <meta charset = "UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer Support Ticket</title>
+    <!--Adding style to make sure the error and loading indicators are hidden by default-->
+<style>
+.error-message {
+            display: none;
+        }
+#loading-indicator {
+            display: none;
+        }
+body {
+    background-color: violet;
+    font-family: Helvetica, sans-serif;
+}
+</style>
 </head>
 <body>
 <header>
@@ -16,8 +29,10 @@
 <section id="container" >
     <div id="tickets"></div>
 </section>
-
+<!-- adding loading indicator for task 4-->
+<div id="loading-indicator">Loading customer tickets...</div>
 <div id="error-message" class="error-message">ERROR: Problem occured during the ticket fetching process.</div>
+
 
 <script src="main.js"></script>
 

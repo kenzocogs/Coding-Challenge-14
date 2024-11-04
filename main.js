@@ -1,5 +1,9 @@
 // Task 2: Fetch Tickets Using Async/Await and Handle Errors
 
+const container = document.getElementById('container')
+let errorMessage = document.getElementById('error-message')
+let loadingIndicator = document.getElementById('loading-indicator')
+
 async function fetchCustomerTickets () {
     try {
     const response = await fetch('https://jsonplaceholder.typicode.com/posts');
@@ -17,7 +21,12 @@ async function fetchCustomerTickets () {
 }
 // catch to handle other errors
     catch (error) {
+        errorMessage.style.display = 'block' // displaying error if one is found
         console.error (`ERROR: could not properly fetch data (${error})`);
+    }
+    // Task 4: Use "finally" to Ensure Cleanup
+    finally {
+        loadingIndicator.style.display ='none' // hiding loading indicator at the end
     }
 }
 
@@ -28,10 +37,9 @@ function displayTickets (tickets) {
     
     tickets.forEach(ticket => {
         // defining DOM elements
-        const container = document.getElementById('container')
         const ticketElement = document.createElement('div')
         ticketElement.classList.add('ticket');
-        // formatting ticket display
+        // formatting ticket display with fields
         ticketElement.innerHTML = ` 
         <h2>Ticket: ${ticket.id}</h2>
         <p><i>Customer: ${ticket.userId}</i></p>
